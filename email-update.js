@@ -3,7 +3,7 @@ function updateTeacherEmail(email) {
       .then(response => response.json())
       .then(data => {
         var teacherId = data.teacher._id;
-        var [localPart, domain] = baseEmail.split('@');
+        var [localPart, domain] = email.split('@');
         var dynamicEmail = `${localPart}+${teacherId}@${domain}`;
         fetch('https://teach.classdojo.com/api/teacher/' + teacherId, {
           method: 'PUT',
